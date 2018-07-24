@@ -62,3 +62,28 @@ function calculateBonus(employee){
 } // end calculateBonus
 
 //console.log("Atticus bonus should be 0.09: Bonus returned was:", employeeBonuses[0].bonusPercentage);
+
+$(document).ready(function() {
+  $('button').on('click', renderBonuses);
+});
+
+function renderBonuses() {
+  let $bonusesTable = $('#employeeBonuses');
+  $bonusesTable.append(
+    `<tr>
+      <th>Name</th>
+      <th>Bonus %</th>
+      <th>Total Comp</th>
+      <th>Total Bonus</th>
+    </tr>`);
+
+  for (bonus of employeeBonuses) {
+    $bonusesTable.append(
+      `<tr>
+        <td>${bonus.name}</td>
+        <td>${bonus.bonusPercentage * 100}%</td>
+        <td>$${bonus.totalCompensation}</td>
+        <td>$${bonus.totalBonus}</td>
+      </tr>`);
+  }
+}
